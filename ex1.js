@@ -38,3 +38,26 @@ const fullName=(name) => {
 fullName();//undefined
 fullName("ananya");
 fullName("anjor");
+//strings
+let strooo="anamika";
+console.log(strooo.indexOf("m"));
+console.log(str.length);
+for(let i=0;i<str.length;i++){
+    console.log(str[i]);
+}
+console.log(str[7]);
+// for(let c of str){
+//     console.log(c);
+// }
+let obj7={
+    name:"anshika",
+    age:18,
+    course:"CSE",
+    address:"ghaziabad"
+};
+// console.log(obj7.name);
+// console.log(obj7.age);
+// console.log(obj7.course);
+// console.log(obj7.address);
+// console.log("her name is "+ obj7.name+" and her age is "+obj7["age"]+" and she pursuing a course "+obj7.course+" and she is from "+obj7["address"]);
+console.log(`her name is  ${obj7.name} and her age is  ${obj7["age"]} and she pursuing a course ${obj7.course} and she is from ${obj7["address"]}`);

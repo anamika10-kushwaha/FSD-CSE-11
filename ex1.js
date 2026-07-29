@@ -64,4 +64,32 @@ console.log(`her name is  ${obj7.name} and her age is  ${obj7["age"]} and she pu
 //arrays
 let arr=[1, "code" , true , 3.4];
 console.log(arr);
+console.log(typeof arr);
 console.log(arr.length);
+for(let i of arr){
+    console.log(i);
+}
+arr[0]="anamika";/* not possible in case of strings
+beacause strings are immutable.
+*/
+for(let i of arr){
+    console.log(i);
+}
+let immut="coding";
+immut[0]='f';
+console.log(immut);//strings are immutable
+console.log(arr.toString());
+console.log(arr.join(" and "));//commas replaced by and.
+arr.push(78);
+console.log(arr);
+console.log(arr.pop());
+arr.pop();
+console.log(arr);
+arr.unshift("anaah");//add at starting
+console.log(arr);
+arr.shift();
+console.log(arr);
+// arr.splice(1,2);
+// console.log(arr); 
+arr.toString();
+console.log(arr);

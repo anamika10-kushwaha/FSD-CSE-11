@@ -61,3 +61,7 @@ let obj7={
 // console.log(obj7.address);
 // console.log("her name is "+ obj7.name+" and her age is "+obj7["age"]+" and she pursuing a course "+obj7.course+" and she is from "+obj7["address"]);
 console.log(`her name is  ${obj7.name} and her age is  ${obj7["age"]} and she pursuing a course ${obj7.course} and she is from ${obj7["address"]}`);
+//arrays
+let arr=[1, "code" , true , 3.4];
+console.log(arr);
+console.log(arr.length);

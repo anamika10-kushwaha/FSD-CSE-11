@@ -6,6 +6,8 @@
     <title>javascript DOM</title>
 </head>
 <body>
+    <h1>hello js !!</h1>
+    <div>box</div>
     <script>
         document.title="DOM";
         console.log(document.body);
@@ -16,6 +18,17 @@
          console.log(document);
          //console.dir
          console.dir(document);
+         //childNodes
+         console.log(document.body.childNodes);
+         console.log(document.body.childNodes[0]);
+         console.log(document.body.childNodes[0].childNodes);
+         console.log(document.body.firstChild);
+         console.log(document.body.firstElementChild);
+         console.log(document.body.lastChild);
+         console.log(document.body.lastElementChild);
+         console.log(document.body.firstChild.nextSibling);
+         console.log(document.body.lastElementChild.previousElementSibling);
+          console.log(document.body.lastChild.parentElement);
     </script>
 </body>
 </html>

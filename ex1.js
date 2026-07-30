@@ -93,3 +93,7 @@ console.log(arr);
 // console.log(arr); 
 arr.toString();
 console.log(arr);
+//for each loop
+arr.forEach((value , index , arr) => {
+    console.log(value,index,arr);
+})

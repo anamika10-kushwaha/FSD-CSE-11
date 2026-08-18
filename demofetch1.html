@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width:80vw;
+            background-color: aqua;
+            color: red;
+            border-collapse:collapse;
+            margin:auto;
+            padding:20px;
+        }
+        th,td{
+            border:2px solid black;
+            text-align:center;
+            }
+          img{
+                size-adjust: inherit;
+            }
+    </style>
+    <script>
+        const url="https://dummyjson.com/products?limit=20&skip=2";
+        async function loadProducts(){
+            try{
+                const res=await fetch(url);
+                const data=await res.json();
+                console.log("response:",res);
+                console.log("data:",data);
+                console.log(data.Products);let rows="";
+                data.products.map(
+                    (i,index)=>{
+                        rows+=`
+                        <tr>
+                            <td>${index+1}</td>
+                            <td>${i.title}</td>
+                            <td><img src="${i.images[0]}" width="50" height="50"></td>
+                            <td>${i.category}</td>
+                            <td>${i.rating}</td>
+                            <td>${(i.price*rate).toFixed(2)}₹</td>
+                            <td>${i.stock}</td>
+                            <td><button>ADD TO CART</button></td>
+                            </tr>
+                        `;
+                    }
+                );
+                const ele=document.getElementById("data");
+                ele.innerHTML=rows;
+            }
+            catch(err){
+                console.log("error :",err);
+            }
+        }
+        loadProducts();let rate="";
+        async function getRate(){
+            const url="https://open.er-api.com/v6/latest/USD";
+            try{
+            const data=await fetch(url);
+            const rate=await data.json();
+            return Number(rate.rates.INR);
+            }
+            catch(err){
+                console.log("error:",err);
+            }
+        }
+        const test=async()=>{
+            rate=await getRate();
+        }
+        test();
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Title</th>
+                <th>images</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Price*rate</th>
+                <th>stock</th>
+                <th>ADD</th>
+                <!-- <th>add to cart</th> -->
+            </tr>
+        </thead>
+        <tbody id="data">
+
+        </tbody>
+    </table>
+</body>
+</html>

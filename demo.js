@@ -24,7 +24,6 @@ const add=(...num)=>{
     return s;
 }
 
-
-
 export {sum,add};
 // export default sum;
+//dummyjson.com

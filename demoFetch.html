@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Fetch in javascript</title>
+    <script>
+        const url="https://dummyjson.com/products?limit=10&skip=2";
+        async function loadProduct() {
+            try{
+                const res=await fetch(url);//beacause fetch is an asynchronous function
+                const data =await res.json();
+                let rows="";let cart=[];
+                console.log("response:",res);
+                console.log("data:",data.products);
+                data.products.map((i,index)=>{
+                      rows+=`
+                    <tr>
+                        <td>${index+1}</td>
+                        <td>${i.title}</td>
+                        <td> <img src="${i.images[0]}" width="50"></td>
+                        <td>${i.category}</td>
+                         <td>${i.rating}</td>
+                          <td>${(i.price*rate).toFixed(2)}₹</td>
+                           <td>${i.stock}</td>
+                           <button onclick='
+                cart.push(${JSON.stringify(i)});
+                alert("${i.title} added to cart!");
+              '>Add to Cart</button>
+                        `;
+                });
+                const ele=document.getElementById("data");
+                ele.innerHTML=rows;console.log("cart:",cart);
+            }
+            catch(err){
+                console.log("err:",err);
+            }
+        }
+        let rate=0;
+        async function getRate(){
+            try{
+                const url="https://open.er-api.com/v6/latest/USD";
+                const res=await fetch(url);
+                const data=await res.json();
+                console.log("rate:",data.rates.INR);
+                return Number(data.rates.INR);
+            }
+            catch(err){
+                console.log("err:",err);
+            }
+        }
+        const test=async()=>{
+            rate=await getRate();
+        }
+        loadProduct();
+        test();
+    </script>
+    <style>
+        table{
+            width:80vw;
+            background-color: aqua;
+            color: red;
+            border-collapse:collapse;
+            margin:auto;
+            padding:20px;
+        }
+            th,td{
+            border:2px solid black;
+            text-align:center;
+            }
+            img{
+                size-adjust: inherit;
+            }
+            button{
+                background-color: aquamarine;
+            }
+    </style>
+</head>
+<body>
+    <h1><center>list of products</center></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Title</th>
+                <th>images</th>
+                <th>Category</th>
+                <th>Rating</th>
+                <th>Price*rate</th>
+                <th>stock</th>
+                <th>add to cart</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+        </tbody>
+    </table>
+    <br>
+    <button style="font-size: large;margin-left: 500px;"><center>place order</center></button>
+</body>
+</html>

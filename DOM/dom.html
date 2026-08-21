@@ -11,13 +11,31 @@
     <div id="red">
 
     </div>
+    <button id="btn1">remove paragraph</button>
+    <button id="btn2">remove all paragraphs</button>
     <script>
         let btn=document.getElementById("btn");
         btn.onclick=function(){
             let para=document.createElement("p");
             para.innerText="this is paragraph";
+            para.style.color="blue";
             let div=document.getElementById("red");
             div.appendChild(para);
+        }
+        let btn1=document.getElementById("btn1");
+        btn1.onclick=function(){
+            let p=document.querySelector("p");
+             let div=document.getElementById("red");
+            div.removeChild(p);
+        }
+        let btn2=document.getElementById("btn2");
+        btn2.onclick=function(){
+            let p=document.querySelectorAll("p");
+             let div=document.getElementById("red");
+            // div.removeElement(p);
+            p.forEach(element => {
+               div.removeChild(element); 
+            });
         }
     </script>
 </body>

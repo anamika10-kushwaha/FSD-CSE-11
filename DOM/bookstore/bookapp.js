@@ -14,7 +14,7 @@ const h2=document.createElement("h1");
 h2.innerText="Price:₹"+props.price;
 const bt=document.createElement("button");
 bt.innerText="Add to Cart";
-bt.onClick=()=>{
+bt.onclick=()=>{
     addTOcart(props);
 }
 div.appendChild(image);
